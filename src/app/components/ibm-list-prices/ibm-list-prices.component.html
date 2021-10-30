@@ -1,4 +1,7 @@
 <p>ibm-list-prices works!</p>
-<table>
-    
-</table>
+<kendo-grid [data]="dataTimeSeries">
+    <kendo-grid-column field="ProductID" title="ID"> </kendo-grid-column>
+    <kendo-grid-column field="ProductName" title="Name"> </kendo-grid-column>
+    <kendo-grid-column field="Category.CategoryName" title="Category"> </kendo-grid-column>
+    <kendo-grid-column field="UnitPrice" title="Price"> </kendo-grid-column>
+</kendo-grid>

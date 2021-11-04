@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="http://unpkg.com/@progress/kendo-theme-material/dist/all.css" />
+
 <kendo-grid *ngIf="ibmPriceData" [data]="gridView" [pageSize]="pageSize" [skip]="skip" [pageable]="{
   buttonCount: buttonCount,
   info: info,
@@ -5,9 +7,7 @@
   pageSizes: pageSizes,
   previousNext: previousNext,
   position: position
-}" (pageChange)="pageChange($event)" [sort]="sort" [sortable]="{
-  mode: 'single'
-}" (sortChange)="sortChange($event)">
+}" (pageChange)="pageChange($event)" [sort]="sort" [sortable]="{  mode: 'single' }" (sortChange)="sortChange($event)">
   <kendo-grid-column field="date" title="Date" width="120">
     <ng-template kendoGridCellTemplate let-dataItem>
       {{dataItem.date | date: 'dd/MM/yyyy'}}
@@ -24,10 +24,13 @@
   <kendo-grid-column field="priceDiff" title="Price Diffrence" width="120">
   </kendo-grid-column>
 </kendo-grid>
-<div *ngIf="dateToSell">
-  Best Date To Sell: {{dateToSell.date | date: 'dd/MM/yyyy'}}, {{dateToSell.high }}
-  <br />
-  Best Date To Buy: {{dateToBuy.date | date: 'dd/MM/yyyy'}}, {{dateToBuy.low}}
+<div *ngIf="dateToSell" class="footer">
+  <div>
+    The best date to sell is on {{dateToSell.date | date: 'dd/MM/yyyy'}}: {{dateToSell.high }}$
+  </div>
+  <div>
+    The best date to buy is on {{dateToBuy.date | date: 'dd/MM/yyyy'}}: {{dateToBuy.low}}$
+  </div>
 </div>
 
 

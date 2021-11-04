@@ -1,1 +1,8 @@
-/* You can add global styles to this file, and also import other style files */
+.header, .footer{
+    background-color: cadetblue;
+    color: rgb(85, 82, 82);
+    height: 70px;
+    padding-bottom: 0%;
+    margin: unset;
+    font-family:-webkit-pictograph;
+}

@@ -1,7 +1,38 @@
-<p>ibm-list-prices works!</p>
-<kendo-grid [data]="dataTimeSeries">
-    <kendo-grid-column field="ProductID" title="ID"> </kendo-grid-column>
-    <kendo-grid-column field="ProductName" title="Name"> </kendo-grid-column>
-    <kendo-grid-column field="Category.CategoryName" title="Category"> </kendo-grid-column>
-    <kendo-grid-column field="UnitPrice" title="Price"> </kendo-grid-column>
+<kendo-grid *ngIf="ibmPriceData" [data]="gridView" [pageSize]="pageSize" [skip]="skip" [pageable]="{
+  buttonCount: buttonCount,
+  info: info,
+  type: type,
+  pageSizes: pageSizes,
+  previousNext: previousNext,
+  position: position
+}" (pageChange)="pageChange($event)" [sort]="sort" [sortable]="{
+  mode: 'single'
+}" (sortChange)="sortChange($event)">
+  <kendo-grid-column field="date" title="Date" width="120">
+    <ng-template kendoGridCellTemplate let-dataItem>
+      {{dataItem.date | date: 'dd/MM/yyyy'}}
+    </ng-template>
+  </kendo-grid-column>
+  <kendo-grid-column field="open" title="Open Price" width="120">
+  </kendo-grid-column>
+  <kendo-grid-column field="close" title="Close Price" width="120">
+  </kendo-grid-column>
+  <kendo-grid-column field="high" title="High Price" width="120">
+  </kendo-grid-column>
+  <kendo-grid-column field="low" title="Low Price" width="120">
+  </kendo-grid-column>
+  <kendo-grid-column field="priceDiff" title="Price Diffrence" width="120">
+  </kendo-grid-column>
 </kendo-grid>
+<div *ngIf="dateToSell">
+  Best Date To Sell: {{dateToSell.date | date: 'dd/MM/yyyy'}}, {{dateToSell.high }}
+  <br />
+  Best Date To Buy: {{dateToBuy.date | date: 'dd/MM/yyyy'}}, {{dateToBuy.low}}
+</div>
+
+
+<!-- 
+ [sortable]="{
+  allowUnsort: allowUnsort,
+  mode: multiple ? 'multiple' : 'single'
+}"  -->
